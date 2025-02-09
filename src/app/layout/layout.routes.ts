@@ -7,5 +7,23 @@ export const featuresLayoutRoutes: Route[] = [
       import('./layout.component').then(
         (m) => m.LayoutComponent
       ),
+    children: [
+      {
+        path: '',
+        redirectTo: 'main',
+        pathMatch: 'full',
+      },
+      {
+        path: 'main',
+        loadComponent: () =>
+          import('../pages/main/main.component').then(
+            (m) => m.MainComponent
+          ),
+      },
+      {
+        path: '**',
+        redirectTo: 'main',
+      },
+    ]
   },
-  ]
+]
